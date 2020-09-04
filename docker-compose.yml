@@ -6,26 +6,19 @@
                 restart: always 
                 ports: 
                     - 3000:3000 
-                networks:
-                        - monitoring
-                volumes: 
-                        - grafana-volume:/var/lib/grafana 
                 depends_on:
                         - influxdb
         influxdb:
                image: influxdb
                container_name: influxdb 
                restart: always
+               environment:
+                     INFLUXDB_DB: telegraph 
+                     INFLUXDB_ADMIN_ENABLED: "true"
+                     INFLUXDB_ADMIN_USER: admin
+                     INFLUXDB_ADMIN_PASSWORD: secretpassword
+                     INFLUXDB_USER: telegraph
+                     INFLUX_USER_PASSWORD: secretpassword
                ports:
                        - 8086:8086
-               networks:
-                       - monitoring
-               volumes:
-                       - influxdb-volume:/var/lib/influxdb 
- networks:
-  monitoring:
- volumes: 
-          grafana-volume:
-               external: true
-          influxdb-volume:
-               external: true
+    
