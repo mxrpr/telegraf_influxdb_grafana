@@ -13,6 +13,10 @@ wget https://dl.influxdata.com/telegraf/releases/telegraf_1.11.2-1_amd64.deb
 ```
 sudo dpkg -i telegraf_1.11.2-1_amd64.deb
 ```
+On Mac:
+```
+brew install telegraf
+```
 ## step 3
 Copy telegraf.conf to the specified location from where you wan to use
 
